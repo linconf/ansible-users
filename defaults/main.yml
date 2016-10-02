@@ -1,0 +1,31 @@
+---
+
+#| Set to `False` to disable the role
+
+users_role_enabled: True
+
+
+#| Settings
+
+# Default to system uid/gid <1000
+users_system_uid: False
+
+# Manage Authorized Keys
+#users_manage_authorized_keys: False
+
+
+#| Define user accounts and groups
+
+users_accounts: []
+users_host_accounts: []
+users_group_accounts: []
+users__accounts: '{{ users_accounts | d({})
+                  | combine(users_host_accounts | d({}), recursive=True)
+                  | combine(users_group_accounts | d({}), recursive=True) }}'
+
+users_groups: []
+users_host_groups: []
+users_group_groups: []
+users__groups: '{{ users_groups | d({})
+                  | combine(users_host_groups | d({}), recursive=True)
+                  | combine(users_group_groups | d({}), recursive=True) }}'

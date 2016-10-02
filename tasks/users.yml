@@ -1,0 +1,81 @@
+---
+
+#| Manage Users / Groups
+
+- name: users - Create groups
+  group:
+    name: '{{ item.group | default(item.name) }}'
+    system: '{{ item.system | d((True | bool) if (users_system_uid | bool) else omit) }}'
+    gid: '{{ item.gid | default(omit) }}'
+    state: 'present'
+  with_flattened:
+    - '{{ users__accounts }}'
+    - '{{ users__groups }}'
+  when: ((item.name is defined and item.name) and
+         (item.state is undefined or (item.state is defined and item.state != 'absent')))
+
+# Create home directories, useful when parent directory DNE
+- name: users - Create home directories
+  file:
+    path: '{{ item.home | default("~" + item.name) }}'
+    state: 'directory'
+    owner: '{{ item.home_owner | default(omit) }}'
+    group: '{{ item.home_group | default(omit) }}'
+    mode: '{{ item.home_mode | default(omit) }}'
+  with_flattened:
+    - '{{ users__accounts }}'
+  when: ((item.name is defined and item.name) and
+         (item.state is undefined or (item.state is defined and item.state != 'absent')) and
+         (item.createhome is undefined or item.createhome)
+
+- name: users - Add/Remove user accounts
+  user:
+    name: '{{ item.name }}'
+    uid: '{{ item.uid | default(omit) }}'
+    group: '{{ item.group | default(item.name) }}'
+    state: '{{ item.state | default("present") }}'
+    comment: '{{ item.comment | default(omit) }}'
+    password: '{{ item.password | default("*") }}'
+    update_password: '{{ item.update_password | default("on_create") }}'
+    system: '{{ item.system | d(True if (users_system_uid | bool) else omit) }}'
+    shell: '{{ item.shell | default(omit) }}'
+    home: '{{ item.home | default(omit) }}'
+    createhome: '{{ item.createhome | default(omit) }}'
+    move_home: '{{ item.move_home | default(omit) }}'
+    skeleton: '{{ item.skeleton | default(omit) }}'
+    expires: '{{ item.expires | default(omit) }}'
+    remove: '{{ item.remove | default(omit) }}'
+    force: '{{ item.force | default(omit) }}'
+    generate_ssh_key: '{{ item.generate_ssh_key | default(omit) }}'
+    ssh_key_bits: '{{ item.ssh_key_bits | default(omit) }}'
+    ssh_key_comment: '{{ item.ssh_key_comment | default(omit) }}'
+    ssh_key_file: '{{ item.ssh_key_file | default(omit) }}'
+    ssh_key_passphrase: '{{ item.ssh_key_passphrase | default(omit) }}'
+    ssh_key_type: '{{ item.ssh_key_type | default(omit) }}'
+  with_flattened:
+    - '{{ users__accounts }}'
+  when: ((item.name is defined and item.name) and
+         (item.state is undefined or (item.state is defined and item.state)))
+
+- name: users - Assign users to groups
+  user:
+    name: '{{ item.name }}'
+    groups: '{{ item.groups }}'
+    state: '{{ item.state | default("present") }}'
+    append: '{{ item.append | default("yes") }}'
+  with_flattened:
+    - '{{ users__accounts }}'
+  when: ((item.name is defined and item.name) and
+         (item.state is undefined or (item.state is defined and item.state != 'absent')) and
+         (item.groups is defined and item.groups))
+
+- name: users - Remove groups
+  group:
+    name: '{{ item.group | default(item.name) }}'
+    state: 'absent'
+  with_flattened:
+    - '{{ users__accounts }}'
+    - '{{ users__groups }}'
+  when: ((item.name is defined and item.name) and
+         (item.state is defined and item.state == 'absent'))
+
