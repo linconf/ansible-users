@@ -17,7 +17,7 @@
 # Create home directories, useful when parent directory DNE
 - name: users - Create home directories
   file:
-    path: '{{ item.home | default("~" + item.name) }}'
+    path: '{{ item.home | default("/home/" + item.name) }}'
     state: 'directory'
     owner: '{{ item.home_owner | default(omit) }}'
     group: '{{ item.home_group | default(omit) }}'
