@@ -1,5 +1,7 @@
 # Ansible Role: users
 
+https://travis-ci.org/linconf/ansible-users.svg?branch=master
+
 An Ansible Role that manages users and groups on Debian/Ubuntu.
 
 
@@ -9,20 +11,16 @@ An Ansible Role that manages users and groups on Debian/Ubuntu.
 
 
 
-## Dependencies
+## Dependencies / Requirements
 
 None
-
-
-## Requirements
-
-None
-
 
 ## License
 
-MIT
+[MIT](https://tldrlegal.com/license/mit-license)
 
 ## Author
 
-[Chad Sheets](http://chadsheets.com/) - CJSheets
+Chad Sheets - [GitHub](https://github.com/cjsheets) | [Blog](http://chadsheets.com/) | [Email](mailto:chad@linconf.com)
+
+[![Analytics](https://cjs-beacon.appspot.com/UA-10006093-3/github/linconf/ansible-users?pixel)](https://github.com/linconf/ansible-users)
