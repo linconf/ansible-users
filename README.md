@@ -1,4 +1,4 @@
-# [![LinConf](https://avatars1.githubusercontent.com/u/18741649?v=3&s=32)](https://github.com/linconf) Ansible Role: users
+# [![LinConf](https://avatars1.githubusercontent.com/u/18741649?v=3&s=50)](https://github.com/linconf) Ansible Role: users
 
 [![Build Status](https://travis-ci.org/linconf/ansible-users.svg?branch=master)](https://travis-ci.org/linconf/ansible-users)
 
