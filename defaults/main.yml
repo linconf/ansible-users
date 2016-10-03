@@ -19,13 +19,9 @@ users_system_uid: False
 users_accounts: []
 users_host_accounts: []
 users_group_accounts: []
-users__accounts: '{{ users_accounts | d({})
-                  | combine(users_host_accounts | d({}), recursive=True)
-                  | combine(users_group_accounts | d({}), recursive=True) }}'
+users__accounts: '{{ users_accounts + users_host_accounts + users_group_accounts }}'
 
 users_groups: []
 users_host_groups: []
 users_group_groups: []
-users__groups: '{{ users_groups | d({})
-                  | combine(users_host_groups | d({}), recursive=True)
-                  | combine(users_group_groups | d({}), recursive=True) }}'
+users__groups: '{{ users_groups + users_host_groups + users_group_groups }}'

@@ -26,7 +26,7 @@
     - '{{ users__accounts }}'
   when: ((item.name is defined and item.name) and
          (item.state is undefined or (item.state is defined and item.state != 'absent')) and
-         (item.createhome is undefined or item.createhome)
+         (item.createhome is undefined or item.createhome))
 
 - name: users - Add/Remove user accounts
   user:
