@@ -1,6 +1,6 @@
 # Ansible Role: users
 
-https://travis-ci.org/linconf/ansible-users.svg?branch=master
+[![Build Status](https://travis-ci.org/linconf/ansible-users.svg?branch=master)](https://travis-ci.org/linconf/ansible-users)
 
 An Ansible Role that manages users and groups on Debian/Ubuntu.
 
