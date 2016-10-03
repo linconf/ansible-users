@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - role_under_test
+  vars:
+    users_accounts:
+      - name: 'test-user'
+        comment: 'test-user'
