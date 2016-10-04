@@ -3,7 +3,7 @@
   hosts: localhost
   become: yes
   roles:
-    - users
+    - this_role
   vars:
     users_accounts:
       - name: 'test-user'
