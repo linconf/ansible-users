@@ -1,0 +1,3 @@
+.kitchen
+tests/vagrant*.rb
+Gemfile.lock

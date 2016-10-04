@@ -10,9 +10,16 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-      - all
+      - wheezy
+      - jessie
     - name: Ubuntu
       versions:
+      - precise
+      - trusty
+      - trusty
+      - wily
       - xenial
+      - yakkety
   galaxy_tags:
     - users
+    - system

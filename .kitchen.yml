@@ -1,0 +1,87 @@
+---
+driver:
+  name: vagrant
+  provider: libvirt
+
+provisioner:
+  name: ansible_playbook
+  hosts: all
+  require_ansible_omnibus: true
+  ansible_verbose: true
+  ansible_diff: true
+  hosts: all
+  roles_path: ../users/
+  playbook: ./tests/playbook.yml
+
+platforms:
+- name: centos-6
+  driver_config:
+    box: centos/6
+#    box_url: https://atlas.hashicorp.com/centos/boxes/6/versions/1608.02/providers/libvirt.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_centos.rb
+- name: centos-7
+  driver_config:
+    box: centos/7
+#    box_url: https://atlas.hashicorp.com/centos/boxes/7/versions/1608.02/providers/libvirt.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_centos.rb
+- name: debian-7
+  driver_config:
+    box: debian/wheezy64
+#    box_url: https://atlas.hashicorp.com/debian/boxes/wheezy64/versions/7.11.2/providers/virtualbox.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_wheezy.rb
+- name: debian-8
+  driver_config:
+    box: debian/jessie64
+#    box_url: https://atlas.hashicorp.com/debian/boxes/jessie64/versions/8.6.1/providers/libvirt.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_jessie.rb
+- name: ubuntu-1204
+  driver_config:
+    box: ubuntu/precise64
+#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/precise64/versions/20160926.0.0/providers/virtualbox.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_ubuntu.rb
+- name: ubuntu-1404
+  driver_config:
+    box: ubuntu/trusty64
+#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/20160926.0.1/providers/virtualbox.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_ubuntu.rb
+- name: ubuntu-1510
+  driver_config:
+    box: ubuntu/wily64
+#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/wily64/versions/20160715.0.0/providers/virtualbox.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_ubuntu.rb
+- name: ubuntu-1604
+  driver_config:
+    box: ubuntu/xenial64
+#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/xenial64/versions/20160930.0.0/providers/virtualbox.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_ubuntu.rb
+- name: ubuntu-1610
+  driver_config:
+    box: ubuntu/yakkety64
+#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/yakkety64/versions/20161003.1.0/providers/virtualbox.box
+    provision: true
+    vagrantfiles:
+      - ./tests/vagrant_ubuntu.rb
+verifier:
+  name: inspec
+  sudo: true
+  inspec_tests:
+    - ./tests/spec.rb
+
+suites:
+- name: ssh-ansible_latest

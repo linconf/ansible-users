@@ -1,7 +1,9 @@
 ---
-- hosts: all
+- name: Test-Kitchen
+  hosts: localhost
+  become: yes
   roles:
-    - role_under_test
+    - users
   vars:
     users_accounts:
       - name: 'test-user'
