@@ -8,7 +8,7 @@ env:
 
 before_install:
   # Pull container.
-  - 'docker pull cjsheets/${distro}-ansible:latest'
+  - 'docker pull linconf/${distro}:latest'
 
 script:
   - container_id=$(mktemp)
