@@ -5,6 +5,9 @@ env:
   - distro: debian8
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distro: debian7
+    init: /sbin/init
+    run_opts: ""
 
 before_install:
   # Pull container.

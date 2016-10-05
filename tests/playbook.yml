@@ -14,9 +14,11 @@
         group: 'test-user-1-primary-group'
         groups: 'test-user-1-secondary-group'
         uid: '1010'
+        shell: '/bin/bash'
         comment: 'First Test User'
       - name: 'test-user-2'
         home: '/opt/users/homedir/test-user-2'
+        shell: '/bin/sh'
       - name: 'test-user-3'
         state: absent
 

@@ -28,27 +28,27 @@ platforms:
     provision: true
     vagrantfiles:
       - ./tests/vagrant_centos.rb
-- name: debian-7
-  driver_config:
-    box: debian/wheezy64
-#    box_url: https://atlas.hashicorp.com/debian/boxes/wheezy64/versions/7.11.2/providers/virtualbox.box
-    provision: true
-    vagrantfiles:
-      - ./tests/vagrant_wheezy.rb
-- name: debian-8
-  driver_config:
-    box: debian/jessie64
-#    box_url: https://atlas.hashicorp.com/debian/boxes/jessie64/versions/8.6.1/providers/libvirt.box
-    provision: true
-    vagrantfiles:
-      - ./tests/vagrant_jessie.rb
-- name: ubuntu-1204
-  driver_config:
-    box: ubuntu/precise64
-#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/precise64/versions/20160926.0.0/providers/virtualbox.box
-    provision: true
-    vagrantfiles:
-      - ./tests/vagrant_ubuntu.rb
+# - name: debian-7
+#   driver_config:
+#     box: debian/wheezy64
+# #    box_url: https://atlas.hashicorp.com/debian/boxes/wheezy64/versions/7.11.2/providers/virtualbox.box
+#     provision: true
+#     vagrantfiles:
+#       - ./tests/vagrant_debian.rb
+# - name: debian-8
+#   driver_config:
+#     box: debian/jessie64
+# #    box_url: https://atlas.hashicorp.com/debian/boxes/jessie64/versions/8.6.1/providers/libvirt.box
+#     provision: true
+#     vagrantfiles:
+#       - ./tests/vagrant_debian.rb
+# - name: ubuntu-1204
+#   driver_config:
+#     box: ubuntu/precise64
+# #    box_url: https://atlas.hashicorp.com/ubuntu/boxes/precise64/versions/20160926.0.0/providers/virtualbox.box
+#     provision: true
+#     vagrantfiles:
+#       - ./tests/vagrant_ubuntu.rb
 - name: ubuntu-1404
   driver_config:
     box: ubuntu/trusty64
@@ -56,17 +56,18 @@ platforms:
     provision: true
     vagrantfiles:
       - ./tests/vagrant_ubuntu.rb
-- name: ubuntu-1510
-  driver_config:
-    box: ubuntu/wily64
-#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/wily64/versions/20160715.0.0/providers/virtualbox.box
-    provision: true
-    vagrantfiles:
-      - ./tests/vagrant_ubuntu.rb
+# Note: ansible_omnibus fails on pip pysphere install
+# - name: ubuntu-1510
+#   driver_config:
+#     box: ubuntu/wily64
+# #    box_url: https://atlas.hashicorp.com/ubuntu/boxes/wily64/versions/20160715.0.0/providers/virtualbox.box
+#     provision: true
+#     vagrantfiles:
+#       - ./tests/vagrant_ubuntu.rb
 - name: ubuntu-1604
   driver_config:
-    box: ubuntu/xenial64
-#    box_url: https://atlas.hashicorp.com/ubuntu/boxes/xenial64/versions/20160930.0.0/providers/virtualbox.box
+    box: yk0/ubuntu-xenial
+#    box_url: https://atlas.hashicorp.com/yk0/boxes/ubuntu-xenial/versions/201606082/providers/libvirt.box
     provision: true
     vagrantfiles:
       - ./tests/vagrant_ubuntu.rb
