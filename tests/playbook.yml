@@ -1,10 +1,45 @@
 ---
-- name: Test-Kitchen
-  hosts: localhost
+- name: users - Testing
+  hosts: all
   become: yes
   roles:
-    - this_role
+    - users
   vars:
+    users_groups:
+      - name: 'test-user-1-secondary-group'
+      - name: 'group-to-remove'
+        state: absent
     users_accounts:
-      - name: 'test-user'
-        comment: 'test-user'
+      - name: 'test-user-1'
+        group: 'test-user-1-primary-group'
+        groups: 'test-user-1-secondary-group'
+        uid: '1010'
+        comment: 'First Test User'
+      - name: 'test-user-2'
+        home: '/opt/users/homedir/test-user-2'
+      - name: 'test-user-3'
+        state: absent
+
+  pre_tasks:
+    - name: users - Testing - Pre-Assertion - Add User 3
+      shell: "adduser test-user-3"
+    - name: users - Testing - Pre-Assertion - Add group-to-remove
+      shell: "groupadd group-to-remove"
+
+  post_tasks:
+    - name: users - Testing - Post-Assertion - User 1 Added
+      shell: "grep test-user-1 /etc/passwd"
+    - name: users - Testing - Post-Assertion - User 2 Added
+      shell: "grep test-user-2 /etc/passwd"
+    - name: users - Testing - Post-Assertion - User 1 Folder Created
+      shell: "ls -d /home/test-user-1"
+    - name: users - Testing - Post-Assertion - User 2 Folder Created
+      shell: "ls -d /opt/users/homedir/test-user-2"
+    - name: users - Testing - Post-Assertion - User 1 Primary Group Correct
+      shell: "id test-user-1 | grep test-user-1-primary-group"
+    - name: users - Testing - Post-Assertion - User 1 Second Group Correct
+      shell: "id test-user-1 | grep test-user-1-secondary-group"
+    - name: users - Testing - Post-Assertion - User 3 Removed
+      shell: "echo '! grep test-user-3 /etc/passwd' | bash"
+    - name: users - Testing - Post-Assertion - group-to-remove Removed
+      shell: "echo '! grep group-to-remove /etc/groups' | bash"

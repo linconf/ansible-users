@@ -1,3 +1,6 @@
+# encoding: utf-8
+# author: Chad Sheets
+
 title 'System Users'
 
 control 'users-01' do
