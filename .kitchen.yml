@@ -64,13 +64,13 @@ platforms:
 #     provision: true
 #     vagrantfiles:
 #       - ./tests/vagrant_ubuntu.rb
-- name: ubuntu-1604
-  driver_config:
-    box: yk0/ubuntu-xenial
-#    box_url: https://atlas.hashicorp.com/yk0/boxes/ubuntu-xenial/versions/201606082/providers/libvirt.box
-    provision: true
-    vagrantfiles:
-      - ./tests/vagrant_ubuntu.rb
+# - name: ubuntu-1604
+#   driver_config:
+#     box: yk0/ubuntu-xenial
+# #    box_url: https://atlas.hashicorp.com/yk0/boxes/ubuntu-xenial/versions/201606082/providers/libvirt.box
+#     provision: true
+#     vagrantfiles:
+#       - ./tests/vagrant_ubuntu.rb
 - name: ubuntu-1610
   driver_config:
     box: ubuntu/yakkety64
