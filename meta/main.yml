@@ -2,24 +2,26 @@
 dependencies: []
 
 galaxy_info:
-  author: "cjsheets"
-  description: "User Management for Debian/Ubuntu"
+  author: "Chad Sheets"
+  description: "User Management for Debian/Ubuntu or RHEL/CentOS"
   company: "LinConf"
   license: "MIT"
   min_ansible_version: 2.0
   platforms:
+    - name: CentOS
+      versions:
+      - 6
+      - 7
+    - name: EL
+      versions:
+      - 6
+      - 7
     - name: Debian
       versions:
-      - wheezy
-      - jessie
+      - all
     - name: Ubuntu
       versions:
-      - precise
-      - trusty
-      - trusty
-      - wily
-      - xenial
-      - yakkety
+      - all
   galaxy_tags:
     - users
     - system
