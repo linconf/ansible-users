@@ -1,7 +1,7 @@
 # Ansible Role: users
 
 [![Build Status](https://travis-ci.org/linconf/ansible-users.svg?branch=master)](https://travis-ci.org/linconf/ansible-users)
-[![Ansible Galaxy](https://img.shields.io/badge/docs-ansible-users-blue.svg)](http://linconf.com/ansible-users/)
+[![Ansible Galaxy](https://img.shields.io/badge/docs-ansible--users-blue.svg)](http://linconf.com/ansible-users/)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-linconf.users-660198.svg)](https://galaxy.ansible.com/linconf/users/)
 
 An Ansible Role that manages users and groups on Debian/Ubuntu and RHEL/CentOS.
