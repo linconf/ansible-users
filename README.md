@@ -4,7 +4,7 @@
 [![Ansible Galaxy](https://img.shields.io/badge/docs-ansible--users-blue.svg)](http://linconf.com/ansible-users/)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-linconf.users-660198.svg)](https://galaxy.ansible.com/linconf/users/)
 
-An Ansible Role that manages users and groups on Debian/Ubuntu and RHEL/CentOS.
+An Ansible role that manages users and groups on Debian/Ubuntu and RHEL/CentOS.
 
 ## Installation
 
